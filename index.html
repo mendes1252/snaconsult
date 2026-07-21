@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNA – Soluções em Negócios Ambientais | Braço Estratégico</title>
+    <meta name="description"
+        content="A SNA é o braço estratégico para empresas do setor ambiental. Atuamos na gestão comercial, custos, processos e liderança. Menos teoria, mais execução.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SNA – Soluções em Negócios Ambientais">
+    <meta property="og:description"
+        content="Braço Estratégico para Empresas do Setor Ambiental. Menos teoria. Mais execução.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ============================================
+           DESIGN TOKENS & CSS VARIABLES (TEMA CLARO SNA)
+           ============================================ */
+        :root {
+            /* Core Light Palette */
+            --color-bg-primary: #FFFFFF;
+            --color-bg-secondary: #F4F7F4;
+            --color-bg-tertiary: #EAF0EB;
+            --color-bg-card: #FFFFFF;
+            --color-bg-card-hover: #F8FAF8;
+            --color-bg-elevated: rgba(255, 255, 255, 0.95);
+
+            /* Brand Colors (Verde SNA) */
+            --color-primary: #1B3A22;
+            --color-primary-light: #2D5A37;
+            --color-primary-dark: #0F2314;
+            
+            --color-accent: #2E7D32;
+            --color-accent-lime: #4CAF50;
+            --color-accent-vibrant: #65B741;
+            --color-accent-dim: rgba(46, 125, 50, 0.08);
+            --color-accent-glow: rgba(101, 183, 65, 0.25);
+
+            /* Text Colors */
+            --color-text-primary: #111827;
+            --color-text-secondary: #4B5563;
+            --color-text-muted: #6B7280;
+            --color-text-on-dark: #FFFFFF;
+
+            /* Borders & Dividers */
+            --color-border: #E2E8E3;
+            --color-border-subtle: #EEF2EE;
+            --color-border-hover: rgba(46, 125, 50, 0.35);
+
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Spacing */
+            --section-padding: clamp(4.5rem, 8vh, 7.5rem);
+            --container-max: 1280px;
+            --container-padding: clamp(1.25rem, 4vw, 2.5rem);
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 50px;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(27, 58, 34, 0.04);
+            --shadow-card: 0 10px 30px rgba(27, 58, 34, 0.06);
+            --shadow-card-hover: 0 20px 40px rgba(27, 58, 34, 0.12);
+            --shadow-glow: 0 0 35px rgba(101, 183, 65, 0.2);
+            --shadow-btn: 0 6px 20px rgba(27, 58, 34, 0.18);
+
+            /* Transitions */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-fast: 0.2s var(--ease-out-expo);
+            --transition-smooth: 0.4s var(--ease-out-expo);
+            --transition-bounce: 0.5s var(--ease-spring);
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: var(--color-text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul { list-style: none; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ============================================
+           LAYOUT & CONTAINER
+           ============================================ */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .section {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        /* ============================================
+           TYPOGRAPHY & UTILITIES
+           ============================================ */
+        .text-center { text-align: center; }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-heading);
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.45rem 1.1rem;
+            background: var(--color-accent-dim);
+            border: 1px solid rgba(46, 125, 50, 0.18);
+            border-radius: var(--radius-full);
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-eyebrow .dot {
+            width: 7px;
+            height: 7px;
+            background: var(--color-accent-vibrant);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--color-accent-vibrant);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.6); opacity: 0.4; }
+        }
+
+        .section-title {
+            font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.12;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: var(--color-accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ============================================
+           BUTTONS & MICRO-INTERACTIONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 0.95rem 2.2rem;
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s var(--ease-spring);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-text-on-dark);
+            box-shadow: var(--shadow-btn);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 28px rgba(27, 58, 34, 0.25);
+        }
+
+        .btn-accent {
+            background: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            box-shadow: 0 6px 20px rgba(101, 183, 65, 0.35);
+        }
+
+        .btn-accent:hover {
+            background: #76cf4d;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(101, 183, 65, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-primary);
+            color: var(--color-primary);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: var(--color-bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .btn-hero-white {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 2.2rem;
+            border-radius: var(--radius-full);
+            background: #FFFFFF;
+            color: var(--color-primary-dark);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.35s var(--ease-spring);
+        }
+
+        .btn-hero-white:hover {
+            background: #F4F7F4;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ============================================
+           HEADER & FLOATING NAVBAR
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: var(--transition-smooth);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            padding: 0.75rem 0;
+        }
+
+        .nav-pill-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 35, 20, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-full);
+            padding: 0.5rem 1.35rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .header.scrolled .nav-pill-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-color: var(--color-border);
+            box-shadow: 0 8px 30px rgba(27, 58, 34, 0.08);
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-height: 52px;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            align-items: center;
+        }
+
+        .nav-links a:not(.btn-nav-cta) {
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            transition: var(--transition-fast);
+            padding: 0.4rem 0;
+        }
+
+        .header.scrolled .nav-links a:not(.btn-nav-cta) {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:not(.btn-nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: var(--color-accent-vibrant);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-links a:not(.btn-nav-cta):hover {
+            color: var(--color-accent-vibrant);
+        }
+
+        .nav-links a:not(.btn-nav-cta):hover::after {
+            width: 100%;
+        }
+
+        .btn-nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.35rem;
+            border-radius: var(--radius-full);
+            background: #FFFFFF;
+            color: var(--color-primary-dark);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: all 0.3s var(--ease-spring);
+        }
+
+        .header.scrolled .btn-nav-cta {
+            background: var(--color-primary);
+            color: #FFFFFF;
+        }
+
+        .btn-nav-cta:hover {
+            background: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(101, 183, 65, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: var(--radius-sm);
+        }
+
+        .header.scrolled .mobile-menu-btn {
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           HERO SECTION (BASEADA NA REFERÊNCIA DO PRINT 1 - VERDURA STYLE)
+           ============================================ */
+        .hero-verdura-section {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #0B190E;
+            overflow: hidden;
+        }
+
+        .hero-bg-media {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 35, 20, 0.82) 0%, rgba(15, 35, 20, 0.5) 60%, rgba(15, 35, 20, 0.25) 100%);
+            z-index: 2;
+        }
+
+        .hero-verdura-container {
+            position: relative;
+            z-index: 10;
+            padding-top: 170px;
+            padding-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: calc(90vh - 80px);
+        }
+
+        .hero-verdura-content {
+            max-width: 760px;
+        }
+
+        .hero-verdura-title {
+            font-size: clamp(2.8rem, 5.8vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.05;
+            color: #FFFFFF;
+            letter-spacing: -0.035em;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-eyebrow-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 2.25rem;
+            max-width: 620px;
+        }
+
+        /* Hero Bottom Social Proof Row */
+        .hero-verdura-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .social-proof-group {
+            display: flex;
+            align-items: center;
+            gap: 1.15rem;
+        }
+
+        .avatar-stack {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #FFFFFF;
+            object-fit: cover;
+            margin-left: -12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .avatar-img:first-child {
+            margin-left: 0;
+        }
+
+        .social-proof-text {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .hero-badge-right {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .badge-right-icon {
+            width: 22px;
+            height: 22px;
+            color: var(--color-accent-vibrant);
+        }
+
+        /* ============================================
+           SEÇÃO DE CARDS PINNED COM SCROLL SUAVE & CONTROLADO
+           ============================================ */
+        .frentes-scroll-wrapper {
+            position: relative;
+            height: 340vh;
+            background: var(--color-bg-primary);
+        }
+
+        .frentes-sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem 0;
+            box-sizing: border-box;
+        }
+
+        .frentes-header-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3.5rem;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+        }
+
+        .frentes-header-left h2 {
+            font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1.1;
+        }
+
+        .frentes-header-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-end;
+        }
+
+        .frentes-header-right p {
+            font-size: 1.05rem;
+            color: var(--color-text-secondary);
+            line-height: 1.65;
+            text-align: right;
+        }
+
+        .carousel-nav-btns {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .carousel-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg-primary);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-spring);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent-vibrant);
+            border-color: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(101, 183, 65, 0.35);
+        }
+
+        .frentes-carousel-window {
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        /* Carousel Track de Cards com Movimento Sútil via Transform */
+        .frentes-carousel-track {
+            display: flex;
+            gap: 1.85rem;
+            width: max-content;
+            will-change: transform;
+            transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
+            padding-left: clamp(1.25rem, 4vw, 2.5rem);
+            padding-right: clamp(1.25rem, 4vw, 2.5rem);
+        }
+
+        /* Card de Estatística/Texto (Estilo Print 2) */
+        .frente-stat-card {
+            width: 295px;
+            min-width: 295px;
+            height: 380px;
+            border-radius: var(--radius-xl);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            padding: 2.25rem 1.85rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s var(--ease-out-expo);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .frente-stat-card:hover {
+            border-color: var(--color-accent-vibrant);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card-hover);
+            background: #FFFFFF;
+        }
+
+        .frente-card-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .frente-card-stat-num {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .frente-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.65rem;
+        }
+
+        .frente-card-desc {
+            font-size: 0.925rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Card de Imagem (Estilo Print 2) */
+        .frente-image-card {
+            width: 295px;
+            min-width: 295px;
+            height: 380px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .frente-image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .frente-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out-expo);
+        }
+
+        .frente-image-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ============================================
+           TICKER SLIDER
+           ============================================ */
+        .ticker-section {
+            padding: 2.5rem 0;
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .ticker-label {
+            text-align: center;
+            font-size: 0.775rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 3.5rem;
+            animation: tickerScroll 28s linear infinite;
+            width: max-content;
+        }
+
+        .ticker-item {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            opacity: 0.45;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .ticker-item:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+
+        .ticker-item .ticker-sep {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--color-accent-vibrant);
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ============================================
+           QUEM SOMOS & COMPARATIVO (DOBRA 2)
+           ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .comparison-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .comparison-card:hover {
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .comparison-header-cell {
+            padding: 1.25rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+
+        .comparison-header-cell.traditional {
+            color: var(--color-text-muted);
+            background: #F8FAF8;
+        }
+
+        .comparison-header-cell.sna {
+            color: var(--color-primary);
+            background: var(--color-accent-dim);
+            border-bottom: 2px solid var(--color-accent-vibrant);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--color-border-subtle);
+            transition: background 0.2s;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row:hover {
+            background: rgba(46, 125, 50, 0.02);
+        }
+
+        .comparison-cell {
+            padding: 1.15rem 1.4rem;
+            font-size: 0.925rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .comparison-cell.old {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            text-decoration-color: rgba(107, 114, 128, 0.4);
+            background: #FAFCFA;
+        }
+
+        .comparison-cell.new {
+            color: var(--color-primary);
+            font-weight: 600;
+            background: #FFFFFF;
+        }
+
+        .comparison-cell .check-icon {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-accent-vibrant);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .about-text h2 {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.75rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .pillar-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            padding: 1.25rem;
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: all 0.35s var(--ease-out-expo);
+        }
+
+        .pillar-item:hover {
+            border-color: var(--color-accent);
+            background: var(--color-bg-card);
+            transform: translateX(6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .pillar-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--color-accent-dim);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pillar-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .pillar-title {
+            font-family: var(--font-heading);
+            font-size: 1.075rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.925rem;
+            color: var(--color-text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2.25rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================
+           PARA QUEM ATUAMOS (DOBRA 3 - BENTO GRID MODELO INSPIRAÇÃO)
+           ============================================ */
+        .segments-section {
+            background: var(--color-bg-secondary);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #0E2214;
+            padding: 2.25rem 2rem;
+            transition: all 0.4s var(--ease-out-expo);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-card.col-span-2 {
+            grid-column: span 2;
+        }
+
+        .bento-card.col-span-4 {
+            grid-column: span 4;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(101, 183, 65, 0.45);
+            background: #112818;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 25px rgba(101, 183, 65, 0.18);
+        }
+
+        /* SVG Background Overlays */
+        .bento-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.14;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .bento-card:hover .bento-bg-pattern {
+            opacity: 0.25;
+        }
+
+        .bento-card-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .bento-icon-badge {
+            display: inline-flex;
+            width: 48px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(101, 183, 65, 0.12);
+            border: 1px solid rgba(101, 183, 65, 0.35);
+            color: var(--color-accent-vibrant);
+            margin-bottom: 1.35rem;
+            transition: transform 0.3s ease;
+        }
+
+        .bento-card:hover .bento-icon-badge {
+            transform: scale(1.08);
+            background: rgba(101, 183, 65, 0.22);
+        }
+
+        .bento-card h3 {
+            font-size: clamp(1.25rem, 2vw, 1.55rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+        }
+
+        .bento-card h3 .text-lime-highlight {
+            color: var(--color-accent-vibrant);
+            display: inline-block;
+        }
+
+        .bento-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.65;
+        }
+
+        /* Mini Feature Pills Grid na Card Larga (col-span-4) */
+        .bento-mini-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.85rem;
+            margin-top: 1.75rem;
+        }
+
+        .bento-mini-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.25s ease;
+        }
+
+        .bento-mini-item:hover {
+            border-color: rgba(101, 183, 65, 0.35);
+            background: rgba(101, 183, 65, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .bento-mini-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-accent-vibrant);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* Pain Points Banner */
+        .pain-banner {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 4rem 3rem;
+            margin-top: 5rem;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(101, 183, 65, 0.12), transparent 70%);
+            pointer-events: none;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.35rem;
+            margin-top: 2.75rem;
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            font-size: 0.975rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            padding: 0.85rem 1rem;
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border-subtle);
+            transition: all 0.25s ease;
+        }
+
+        .pain-item:hover {
+            border-color: var(--color-accent);
+            background: var(--color-bg-card);
+            transform: translateY(-2px);
+        }
+
+        .pain-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-accent);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           COMO ATUAMOS / METODOLOGIA (CARDS DE TEXTO ANIMADOS)
+           ============================================ */
+        .methodology-spotlight-section {
+            background: url('./assets/artistic-blurry-colorful-wallpaper-background.jpg') center/cover no-repeat;
+            color: #FFFFFF;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .methodology-spotlight-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(5, 12, 7, 0.82) 0%, rgba(5, 12, 7, 0.92) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .methodology-spotlight-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Top Header Flex Row */
+        .methodology-header-flex {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 2rem;
+            padding-bottom: 2.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3.5rem;
+        }
+
+        .methodology-header-left {
+            max-width: 680px;
+        }
+
+        .methodology-header-left h2 {
+            font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+        }
+
+        .methodology-header-left h2 span {
+            color: var(--color-accent-vibrant);
+        }
+
+        .methodology-header-left p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.65;
+        }
+
+        .methodology-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.9rem 1.85rem;
+            border-radius: var(--radius-full);
+            background: rgba(101, 183, 65, 0.15);
+            border: 1px solid rgba(101, 183, 65, 0.45);
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.35s ease;
+            box-shadow: 0 0 25px rgba(101, 183, 65, 0.2);
+            white-space: nowrap;
+        }
+
+        .methodology-cta-btn:hover {
+            background: var(--color-accent-vibrant);
+            border-color: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(101, 183, 65, 0.6);
+        }
+
+        .methodology-cta-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .methodology-cta-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Spotlight Cards 2x2 Grid */
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(14, 34, 20, 0.92), rgba(7, 18, 10, 0.96));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 3.25rem 2.85rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+        }
+
+        /* Efeito de Brilho Shimmer Periódico na Borda */
+        .spotlight-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.75s ease;
+            pointer-events: none;
+        }
+
+        .spotlight-card:hover::after {
+            left: 150%;
+        }
+
+        .spotlight-card:hover {
+            border-color: rgba(101, 183, 65, 0.55);
+            background: linear-gradient(135deg, rgba(18, 42, 25, 0.96), rgba(9, 22, 13, 0.98));
+            transform: translateY(-8px) scale(1.015);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), 0 0 45px rgba(101, 183, 65, 0.25);
+        }
+
+        /* Mouse Flashlight Spotlight Overlay */
+        .spotlight-flashlight {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(101, 183, 65, 0.16), transparent 40%);
+        }
+
+        .spotlight-card:hover .spotlight-flashlight {
+            opacity: 1;
+        }
+
+        /* Grid Pattern Background */
+        .spotlight-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 36px 36px;
+            mask-image: radial-gradient(circle at 100% 100%, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at 100% 100%, black 40%, transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .spotlight-card-body {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .spotlight-step-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.95rem;
+            border-radius: var(--radius-full);
+            background: rgba(101, 183, 65, 0.12);
+            border: 1px solid rgba(101, 183, 65, 0.35);
+            font-size: 0.775rem;
+            font-weight: 800;
+            color: var(--color-accent-vibrant);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-step-tag {
+            background: rgba(101, 183, 65, 0.22);
+            border-color: var(--color-accent-vibrant);
+            transform: translateX(4px);
+            box-shadow: 0 0 15px rgba(101, 183, 65, 0.3);
+        }
+
+        .spotlight-card h3 {
+            font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .spotlight-card:hover h3 {
+            color: #FFFFFF;
+            transform: translateX(4px);
+        }
+
+        .spotlight-card p {
+            font-size: 0.975rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.65;
+            transition: color 0.3s ease;
+        }
+
+        .spotlight-card:hover p {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .spotlight-list {
+            margin-top: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .spotlight-list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            transition: all 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-list-item {
+            color: #FFFFFF;
+            transform: translateX(6px);
+        }
+
+        .spotlight-list-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-accent-vibrant);
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, stroke 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-list-item svg {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 6px var(--color-accent-vibrant));
+        }
+
+        .methodology-header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1.25rem;
+        }
+
+        .methodology-header-logo {
+            height: 54px;
+            width: auto;
+            max-width: 220px;
+            margin-top: -0.5rem;
+            filter: none;
+            transition: transform 0.3s ease;
+        }
+
+        .methodology-header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 1024px) {
+            .methodology-header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .methodology-header-right {
+                align-items: flex-start;
+            }
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .spotlight-card-body {
+                max-width: 100%;
+            }
+        }
+
+        /* ============================================
+           DIFERENCIAIS & RESULTADOS (DOBRA 6)
+           ============================================ */
+        .diff-grid {
+            display grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: stretch;
+        }
+
+        /* Accordion Interativo em Diferenciais */
+        .diff-accordion-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .diff-accordion-item {
+            background: #FFFFFF;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .diff-accordion-item:hover {
+            border-color: rgba(46, 125, 50, 0.4);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .diff-accordion-item.active {
+            border-color: var(--color-accent);
+            background: #FFFFFF;
+            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.12);
+        }
+
+        .diff-accordion-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.35rem 1.6rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 1.025rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: color 0.3s ease;
+        }
+
+        .diff-accordion-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .diff-accordion-title-wrap svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-accent-vibrant);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .diff-accordion-item.active .diff-accordion-title-wrap svg {
+            transform: scale(1.15);
+        }
+
+        .diff-accordion-chevron {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(46, 125, 50, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .diff-accordion-item.active .diff-accordion-chevron {
+            transform: rotate(180deg);
+            background: var(--color-accent);
+            color: #FFFFFF;
+        }
+
+        .diff-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+            padding: 0 1.6rem;
+        }
+
+        .diff-accordion-item.active .diff-accordion-content {
+            padding: 0 1.6rem 1.4rem 3.6rem;
+        }
+
+        .diff-accordion-content p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        .results-card {
+            background: linear-gradient(135deg, rgba(14, 34, 20, 0.96), rgba(7, 18, 10, 0.98));
+            border: 1px solid rgba(46, 125, 50, 0.35);
+            border-radius: var(--radius-xl);
+            padding: 3.5rem 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 30px rgba(46, 125, 50, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .results-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 14rem;
+            font-family: Georgia, serif;
+            color: rgba(101, 183, 65, 0.08);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .results-card h3 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+        }
+
+        .results-highlight-box {
+            position: relative;
+            z-index: 2;
+            padding: 2.25rem;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 5px solid var(--color-accent-vibrant);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .results-highlight-quote {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.6;
+            color: #FFFFFF;
+            letter-spacing: -0.01em;
+            margin: 0;
+        }
+
+        .results-highlight-quote span {
+            color: var(--color-accent-vibrant);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           PLANOS & ASSESSORIA (DOBRA 7)
+           ============================================ */
+        .pricing-section {
+            background: var(--color-bg-secondary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            margin-top: 4rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 2.75rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s var(--ease-out-expo);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: var(--color-primary);
+            color: var(--color-text-on-dark);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-card-hover);
+            transform: scale(1.03);
+            z-index: 2;
+        }
+
+        .pricing-card.featured h3 {
+            color: var(--color-text-on-dark);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .pricing-card:not(.featured):hover {
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .pricing-featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent-vibrant);
+            color: var(--color-primary-dark);
+            padding: 0.35rem 1.35rem;
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-size: 0.775rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-header {
+            text-align: center;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .pricing-card.featured .pricing-header {
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .pricing-price {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .pricing-card.featured .pricing-price {
+            color: var(--color-accent-vibrant);
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .pricing-card.featured .pricing-price span {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .pricing-features {
+            flex: 1;
+            margin-bottom: 2.25rem;
+        }
+
+        .pricing-features li {
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        .pricing-features li svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-accent);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pricing-card.featured .pricing-features li svg {
+            stroke: var(--color-accent-vibrant);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* Assessoria Banner */
+        .assessoria-banner {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-text-on-dark);
+            border-radius: var(--radius-xl);
+            padding: 3.75rem 3.5rem;
+            margin-top: 4.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-card-hover);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assessoria-banner h3 {
+            color: #FFFFFF !important;
+        }
+
+        .assessoria-banner::before {
+            content: '';
+            position: absolute;
+            left: -80px;
+            top: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(101, 183, 65, 0.25), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ============================================
+           CONTATO (DOBRA 8)
+           ============================================ */
+        .contact-section-logo {
+            height: 58px;
+            width: auto;
+            max-width: 240px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 1.35rem;
+            margin: 2.25rem 0;
+            padding: 1.5rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-smooth);
+        }
+
+        .profile-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile-img {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background-image: url('./assets/patrick_suzuki.png');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--color-accent-vibrant);
+            flex-shrink: 0;
+        }
+
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .profile-role {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-primary);
+            transition: var(--transition-fast);
+        }
+
+        .contact-link:hover {
+            color: var(--color-accent);
+            transform: translateX(6px);
+        }
+
+        .contact-link-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            transition: all 0.3s var(--ease-spring);
+        }
+
+        .contact-link:hover .contact-link-icon {
+            background: var(--color-accent-dim);
+            border-color: var(--color-accent);
+        }
+
+        .contact-link-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-form {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 2.75rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .form-group {
+            margin-bottom: 1.35rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.05rem 1.35rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 0.975rem;
+            color: var(--color-text-primary);
+            transition: var(--transition-fast);
+        }
+
+        .form-control::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px var(--color-accent-dim);
+            background: var(--color-bg-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-text-on-dark);
+            padding: 4.5rem 0 2.25rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-desc {
+            font-size: 0.925rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .footer h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text-on-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.925rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent-vibrant);
+            padding-left: 4px;
+        }
+
+        .footer-essence {
+            font-style: italic;
+            font-family: var(--font-heading);
+            color: var(--color-accent-vibrant);
+            font-size: 1.1rem;
+            line-height: 1.75;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.875rem;
+            color: #FFFFFF !important;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           WHATSAPP FLOAT BUTTON
+           ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 62px;
+            height: 62px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.4s var(--ease-spring);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12) rotate(-8deg);
+            box-shadow: 0 14px 35px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* ============================================
+           ANIMAÇÕES DE ENTRADA DAS DOBRAS (REVEAL)
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-45px);
+            transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(45px);
+            transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ============================================
+           RESPONSIVIDADE COMPLETA
+           ============================================ */
+        @media (max-width: 1024px) {
+            .frentes-header-grid,
+            .about-grid,
+            .diff-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .frentes-header-right {
+                align-items: flex-start;
+            }
+
+            .frentes-header-right p {
+                text-align: left;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .segments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--color-bg-primary);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition-smooth);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+                z-index: 999;
+                border-left: 1px solid var(--color-border);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+
+            .segments-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .timeline-grid::before {
+                display: none;
+            }
+
+            .timeline-item {
+                display: flex;
+                gap: 1.25rem;
+                align-items: flex-start;
+            }
+
+            .timeline-step {
+                margin-bottom: 0;
+                flex-shrink: 0;
+                width: 58px;
+                height: 58px;
+                font-size: 1.3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pain-banner {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .assessoria-banner {
+                padding: 2.25rem 1.75rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .hero-verdura-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========== FLOATING HEADER / NAVBAR ========== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav-pill-container" id="nav-pill-container">
+                <a href="#" class="logo">
+                    <img src="./extracted/SVG/Logo Transparente Branco.svg" alt="SNA - Soluções em Negócios Ambientais" class="logo-img" id="header-logo">
+                </a>
+
+                <nav class="nav-links" id="nav-links">
+                    <a href="#frentes">Nossas Frentes</a>
+                    <a href="#quem-somos">Quem Somos</a>
+                    <a href="#para-quem">Para Quem</a>
+                    <a href="#metodologia">Como Atuamos</a>
+                    <a href="#planos">Planos</a>
+                    <a href="#contato" class="btn-nav-cta">
+                        Entre em contato
+                    </a>
+                </nav>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION (REPOSITIONADA & DESIGN ELEGANTE CONFORME PRINT 1) ========== -->
+    <section class="hero-verdura-section" id="hero">
+        <img src="./assets/sunrise-bali-jungle.jpg" alt="SNA Natureza e Negócios Ambientais" class="hero-bg-media">
+        <div class="hero-bg-overlay"></div>
+
+        <div class="container hero-verdura-container">
+            <!-- Conteúdo Principal Alinhado à Esquerda -->
+            <div class="hero-verdura-content reveal-left">
+                <h1 class="hero-verdura-title">
+                    Braço Estratégico Para Empresas do Setor Ambiental
+                </h1>
+
+                <p class="hero-eyebrow-text">
+                    Impulsionando o setor com soluções estratégicas e práticas para construir empresas ambientais mais fortes e sustentáveis.
+                </p>
+
+                <div>
+                    <a href="#contato" class="btn-hero-white">
+                        Entre em contato
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rodapé da Hero: Social Proof e Badge Integrado -->
+            <div class="hero-verdura-bottom reveal">
+                <div class="social-proof-group">
+                    <div class="avatar-stack">
+                        <img src="./assets/patrick_suzuki.png" alt="Especialista SNA" class="avatar-img">
+                        <img src="./assets/consultoria ambiental.jpg" alt="Consultoria" class="avatar-img">
+                        <img src="./assets/laboratório de analise ambiental.webp" alt="Laboratório" class="avatar-img">
+                    </div>
+                    <span class="social-proof-text">Aprovado por líderes em gestão ambiental</span>
+                </div>
+
+                <div class="hero-badge-right">
+                    <svg class="badge-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Soluções Integradas em Gestão 360°</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TICKER DE PILARES ========== -->
+    <div class="ticker-section">
+        <div class="ticker-label">Pilares de Excelência SNA</div>
+        <div style="overflow: hidden;">
+            <div class="ticker-track">
+                <span class="ticker-item">Gestão Comercial <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão de Custos <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão de Processos <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Planejamento Estratégico <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Desenvolvimento de Lideranças <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Diagnóstico Imersivo <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Implantação Assistida <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão Contínua <span class="ticker-sep"></span></span>
+                <!-- Repetição para Loop Infinito -->
+                <span class="ticker-item">Gestão Comercial <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão de Custos <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão de Processos <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Planejamento Estratégico <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Desenvolvimento de Lideranças <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Diagnóstico Imersivo <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Implantação Assistida <span class="ticker-sep"></span></span>
+                <span class="ticker-item">Gestão Contínua <span class="ticker-sep"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SEÇÃO DE CARDS PINNED COM SCROLL SUAVE ========== -->
+    <div class="frentes-scroll-wrapper" id="frentes">
+        <div class="frentes-sticky-container">
+            <div class="container">
+                <!-- Cabeçalho com Botões do Carrossel (Estilo Print 2) -->
+                <div class="frentes-header-grid">
+                    <div class="frentes-header-left reveal-left">
+                        <div class="section-eyebrow"><span class="dot"></span> Nossas Frentes</div>
+                        <h2>Frentes Estratégicas Para O Seu Crescimento</h2>
+                    </div>
+
+                    <div class="frentes-header-right reveal-right">
+                        <p>Integração total entre vendas, custos, processos e liderança para construir resultados sólidos e mensuráveis.</p>
+                        
+                        <div class="carousel-nav-btns">
+                            <button class="carousel-btn" id="carousel-prev-btn" aria-label="Anterior">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            </button>
+                            <button class="carousel-btn" id="carousel-next-btn" aria-label="Próximo">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Janela de visualização dos cards em transição horizontal -->
+            <div class="frentes-carousel-window">
+                <div class="frentes-carousel-track" id="frentes-carousel-track">
+                    <!-- Card 1: Stat/Texto -->
+                    <div class="frente-stat-card">
+                        <div class="frente-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="frente-card-stat-num">+35%</div>
+                            <h3 class="frente-card-title">Gestão Comercial</h3>
+                            <p class="frente-card-desc">Funil de vendas ativo, prospecção estruturada e acompanhamento diário de metas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Imagem -->
+                    <div class="frente-image-card">
+                        <img src="./assets/consultoria ambiental.jpg" alt="Consultoria Ambiental">
+                    </div>
+
+                    <!-- Card 3: Stat/Texto -->
+                    <div class="frente-stat-card">
+                        <div class="frente-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18"></path>
+                                <path d="m19 9-5 5-4-4-3 3"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="frente-card-stat-num">100%</div>
+                            <h3 class="frente-card-title">Gestão de Custos</h3>
+                            <p class="frente-card-desc">DRE gerencial, apuração de margens e precificação rigorosa para rentabilidade.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Imagem -->
+                    <div class="frente-image-card">
+                        <img src="./assets/laboratório de analise ambiental.webp" alt="Laboratório de Análises">
+                    </div>
+
+                    <!-- Card 5: Stat/Texto -->
+                    <div class="frente-stat-card">
+                        <div class="frente-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="frente-card-stat-num">-40%</div>
+                            <h3 class="frente-card-title">Gestão de Processos</h3>
+                            <p class="frente-card-desc">Mapeamento de fluxos, matriz RACI e eliminação de retrabalho na operação.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Imagem -->
+                    <div class="frente-image-card">
+                        <img src="./assets/Gerenciadoras de resíduos.jpg" alt="Gerenciadoras de Resíduos">
+                    </div>
+
+                    <!-- Card 7: Stat/Texto -->
+                    <div class="frente-stat-card">
+                        <div class="frente-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="frente-card-stat-num">360°</div>
+                            <h3 class="frente-card-title">Liderança & OKRs</h3>
+                            <p class="frente-card-desc">Rotinas de gestão com KPIs e cultura de responsabilidade e autonomia.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: Imagem -->
+                    <div class="frente-image-card">
+                        <img src="./assets/Empresas de engenharia ambiental.jpg" alt="Engenharia Ambiental">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== QUEM SOMOS (DOBRA 2) ========== -->
+    <section class="section" id="quem-somos">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Tabela Comparativa Visual -->
+                <div class="reveal-left">
+                    <div class="comparison-card">
+                        <div class="comparison-header">
+                            <div class="comparison-header-cell traditional">Consultoria Tradicional</div>
+                            <div class="comparison-header-cell sna">Padrão SNA</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell old">Diagnóstico teórico</div>
+                            <div class="comparison-cell new"><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Faz Junto</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell old">Entrega de relatórios</div>
+                            <div class="comparison-cell new"><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Executa na Prática</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell old">Recomendações distantes</div>
+                            <div class="comparison-cell new"><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Acompanha a Rotina</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comparison-cell old">Sai após a entrega</div>
+                            <div class="comparison-cell new"><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Cobra Resultados</div>
+                        </div>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Foco em Execução</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Prática</div>
+                            <div class="stat-label">Menos teoria, mais ação</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Contínua</div>
+                            <div class="stat-label">Parceria de Longo Prazo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="about-text reveal-right">
+                    <div class="section-eyebrow"><span class="dot"></span> Quem Somos</div>
+                    <h2>Inteligência estratégica, focada em <span class="highlight">produtividade e resultados.</span></h2>
+                    <p>A SNA é a evolução de uma consultoria tradicional para um braço estratégico, conectando empresas do setor ambiental a especialistas que atuam diretamente na operação — não apenas como consultores, mas como extensão do negócio.</p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-item">
+                            <div class="pillar-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <div class="pillar-title">Diagnóstico e Ação Imersiva</div>
+                                <div class="pillar-desc">Identificamos rapidamente onde sua operação ou equipe comercial estão perdendo eficiência e margem.</div>
+                            </div>
+                        </div>
+
+                        <div class="pillar-item">
+                            <div class="pillar-icon">
+                                <svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                            </div>
+                            <div>
+                                <div class="pillar-title">Acompanhamento & Governança</div>
+                                <div class="pillar-desc">Instalamos processos sustentáveis, libertando os sócios do microgerenciamento diário.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PARA QUEM ATUAMOS (DOBRA 3) ========== -->
+    <section class="section segments-section" id="para-quem">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-eyebrow" style="margin: 0 auto 1.25rem;"><span class="dot"></span> Para Quem Atuamos</div>
+                <h2 class="section-title">Empresas ambientais que precisam <span class="highlight">crescer com estrutura.</span></h2>
+                <p class="section-subtitle">Apoiamos empresas do setor ambiental em fase de expansão que buscam profissionalizar sua gestão, custos e vendas.</p>
+            </div>
+
+            <!-- Bento Grid de Segmentos Ambientais (Estilo Inspiração com SVG Patterns e Detalhes) -->
+            <div class="bento-grid reveal-scale">
+                <!-- Card 1: Laboratórios de Análises (col-span-2) -->
+                <div class="bento-card col-span-2">
+                    <div class="bento-bg-pattern">
+                        <svg class="h-full w-full" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <pattern id="gridA" width="24" height="24" patternUnits="userSpaceOnUse">
+                                <path d="M24 0H0V24" stroke="#65B741" stroke-opacity="0.3" stroke-width="0.5"></path>
+                            </pattern>
+                            <rect width="400" height="300" fill="url(#gridA)"></rect>
+                            <circle cx="70" cy="80" r="3" fill="#65B741"></circle>
+                            <circle cx="220" cy="50" r="3" fill="#65B741"></circle>
+                            <circle cx="330" cy="130" r="3" fill="#65B741"></circle>
+                            <path d="M40 210C90 160 160 170 210 130C260 90 310 100 340 70" stroke="#65B741" stroke-opacity="0.4" stroke-width="1.5" fill="none"></path>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <div class="bento-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+                                <path d="M8.5 2h7"></path>
+                                <path d="M7 16h10"></path>
+                            </svg>
+                        </div>
+                        <h3>Laboratórios de Análises.<br><span class="text-lime-highlight">Rigor & Eficiência de Laudos.</span></h3>
+                        <p>Otimizamos o fluxo de amostras, eliminamos gargalos na emissão de laudos e garantimos agilidade sem perder a qualidade e acreditação ISO 17025.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Consultorias & Engenharia (col-span-4 Larga com 4 Mini Features) -->
+                <div class="bento-card col-span-4">
+                    <div class="bento-bg-pattern">
+                        <svg class="h-full w-full" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 160C60 90 140 90 200 150C235 185 270 185 315 150C370 107 430 120 480 165C520 200 560 200 610 165C660 130 700 140 780 110" stroke="#65B741" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round"></path>
+                            <g stroke="#65B741" stroke-opacity="0.18">
+                                <path d="M0 40H800M0 80H800M0 120H800M0 160H800M0 200H800M0 240H800"></path>
+                                <path d="M80 0V300M160 0V300M240 0V300M320 0V300M400 0V300M480 0V300M560 0V300M640 0V300M720 0V300"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <div class="bento-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"></path>
+                            </svg>
+                        </div>
+                        <h3>Consultorias & Projetos Ambientais.<br><span class="text-lime-highlight">Precificação & Gestão de Margens.</span></h3>
+                        <p>Eliminamos o subdimensionamento de horas técnicas e instalamos rotinas comerciais ativas para transformar contratos pontuais em receitas recorrentes com alta previsibilidade.</p>
+
+                        <div class="bento-mini-features">
+                            <div class="bento-mini-item">
+                                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                Precificação por Hora
+                            </div>
+                            <div class="bento-mini-item">
+                                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                                SLA de Licenciamento
+                            </div>
+                            <div class="bento-mini-item">
+                                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                Funil Comercial Ativo
+                            </div>
+                            <div class="bento-mini-item">
+                                <svg viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                                Matriz RACI de Projetos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Gerenciadoras de Resíduos (col-span-2) -->
+                <div class="bento-card col-span-2">
+                    <div class="bento-bg-pattern">
+                        <svg class="h-full w-full" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="150" r="80" stroke="#65B741" stroke-opacity="0.3" stroke-width="1.2" fill="none"></circle>
+                            <circle cx="200" cy="150" r="42" stroke="#65B741" stroke-opacity="0.4" stroke-width="1.2" fill="none"></circle>
+                            <circle cx="200" cy="150" r="4" fill="#65B741"></circle>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <div class="bento-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <h3>Gerenciadoras de Resíduos.<br><span class="text-lime-highlight">Lucratividade por Rota.</span></h3>
+                        <p>Controle rigoroso do custo por quilômetro rodado, roteirização inteligente e valorização máxima de resíduos em escala industrial.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Aterros e Tratamento (col-span-2) -->
+                <div class="bento-card col-span-2">
+                    <div class="bento-bg-pattern">
+                        <svg class="h-full w-full" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 220C100 170 170 70 340 110" stroke="#65B741" stroke-opacity="0.35" stroke-width="1.4" fill="none"></path>
+                            <circle cx="130" cy="140" r="3" fill="#65B741"></circle>
+                            <circle cx="250" cy="110" r="3" fill="#65B741"></circle>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <div class="bento-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3>Aterros & Destinação Final.<br><span class="text-lime-highlight">Conformidade & Escala.</span></h3>
+                        <p>Automação de balança e pesagem, controle de volumetria de pátio e redução drástica de passivos operacionais e regulatórios.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Engenharia & Serviços (col-span-2) -->
+                <div class="bento-card col-span-2">
+                    <div class="bento-bg-pattern">
+                        <svg class="h-full w-full" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <pattern id="gridE" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M20 0H0V20" stroke="#65B741" stroke-opacity="0.25" stroke-width="0.5"></path>
+                            </pattern>
+                            <rect width="400" height="300" fill="url(#gridE)"></rect>
+                            <path d="M20 180C60 120 120 180 160 160C200 140 230 150 260 120C290 90 320 120 360 110" stroke="#65B741" stroke-opacity="0.45" stroke-width="1.6" fill="none"></path>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <div class="bento-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+                            </svg>
+                        </div>
+                        <h3>Prestadores & Engenharia.<br><span class="text-lime-highlight">Escala Sem Perda de Margem.</span></h3>
+                        <p>Estruturação de equipes comerciais, rotinas com KPIs diários e organização do backoffice para suportar a expansão rápida do negócio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pain Points Banner -->
+            <div class="pain-banner reveal">
+                <div class="text-center">
+                    <h3 class="section-title" style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 0.75rem;">Sua empresa enfrenta algum destes desafios?</h3>
+                    <p style="max-width: 650px; margin: 0 auto; color: var(--color-text-secondary);">Operação, vendas, finanças e gestão de pessoas estão interconectadas. Uma falha em um pilar afeta todo o negócio.</p>
+                </div>
+
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Crescimento sem estrutura gerencial
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Baixa previsibilidade comercial
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Dificuldade em controlar margens
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Dependência de pessoas-chave
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Falhas de comunicação entre setores
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Retrabalho operacional frequente
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Falta de indicadores (KPIs) confiáveis
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Decisões baseadas em intuição
+                    </div>
+                    <div class="pain-item">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Liderança técnica sem rotina de gestão
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 2.5rem;">
+                    <a href="#contato" class="btn btn-primary">Se identificou? Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMO ATUAMOS / METODOLOGIA (NOVO LAYOUT SPOTLIGHT 3D INSPIRAÇÃO) ========== -->
+    <section class="section methodology-spotlight-section" id="metodologia">
+        <div class="container">
+            <!-- Top Header Flex Row -->
+            <div class="methodology-header-flex reveal">
+                <div class="methodology-header-left">
+                    <h2>Como Atuamos: Metodologia prática para <span>escala & resultados</span></h2>
+                    <p>Mapeamento de gargalos, estruturação de rotinas gerenciais e acompanhamento lado a lado com a liderança para transformar sua empresa ambiental.</p>
+                </div>
+                <div class="methodology-header-right">
+                    <img src="./extracted/SVG/Logo Transparente Branco.svg" alt="Logo SNA" class="methodology-header-logo">
+                    <a href="#contato" class="methodology-cta-btn">
+                        <span>Falar com Consultor</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Spotlight Cards 2x2 Grid -->
+            <div class="spotlight-grid reveal-scale">
+                <!-- Card 1: 1. Diagnóstico Imersivo -->
+                <div class="spotlight-card">
+                    <div class="spotlight-flashlight"></div>
+                    <div class="spotlight-bg-grid"></div>
+
+                    <div class="spotlight-card-body">
+                        <div class="spotlight-step-tag">Etapa 01 • Imersão</div>
+                        <h3>Diagnóstico Imersivo & Mapeamento de Riscos</h3>
+                        <p>Mapeamos a realidade da sua empresa através de análise de dados financeiros, processos operacionais e entrevistas em profundidade com a equipe.</p>
+
+                        <div class="spotlight-list">
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Mapeamento de Processos & Gargalos
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Análise da DRE Gerencial & Custos
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Diagnóstico Comercial & Funil de Vendas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: 2. Plano de Ação Estratégico -->
+                <div class="spotlight-card">
+                    <div class="spotlight-flashlight"></div>
+                    <div class="spotlight-bg-grid"></div>
+
+                    <div class="spotlight-card-body">
+                        <div class="spotlight-step-tag">Etapa 02 • Estratégia</div>
+                        <h3>Plano de Ação Estratégico & OKRs</h3>
+                        <p>Transformamos gargalos diagnosticados em rotinas de gestão claras, com prazos definidos, matriz RACI de responsabilidades e indicadores (KPIs).</p>
+
+                        <div class="spotlight-list">
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Matriz RACI de Responsabilidades
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Definição de KPIs & Metas Operacionais
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Cronograma de Entregas & SLA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: 3. Implantação Assistida -->
+                <div class="spotlight-card">
+                    <div class="spotlight-flashlight"></div>
+                    <div class="spotlight-bg-grid"></div>
+
+                    <div class="spotlight-card-body">
+                        <div class="spotlight-step-tag">Etapa 03 • Execução</div>
+                        <h3>Implantação Assistida Lado a Lado</h3>
+                        <p>Não entregamos apenas relatórios. Atuamos dentro da sua empresa lado a lado com a equipe, conduzindo reuniões, orientando decisões e ajustando rotas na prática.</p>
+
+                        <div class="spotlight-list">
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Acompanhamento Semanal Presencial/Remoto
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Formação & Capacitação da Liderança
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Correção Rápida de Desvios na Operação
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: 4. Gestão Contínua & Governança -->
+                <div class="spotlight-card">
+                    <div class="spotlight-flashlight"></div>
+                    <div class="spotlight-bg-grid"></div>
+
+                    <div class="spotlight-card-body">
+                        <div class="spotlight-step-tag">Etapa 04 • Governança</div>
+                        <h3>Gestão Contínua & Governança Sustentável</h3>
+                        <p>Garantimos a consolidação de uma verdadeira cultura gerencial, protegendo margens de lucro e libertando os sócios do microgerenciamento diário.</p>
+
+                        <div class="spotlight-list">
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Monitoramento Contínuo de Margens & DRE
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Autonomia & Cultura de Responsabilidade
+                            </div>
+                            <div class="spotlight-list-item">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                Previsibilidade Financeira & Escala
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script Flashlight de Rastreamento de Ponteiro de Mouse -->
+        <script>
+            (function() {
+                const spotlightCards = document.querySelectorAll('.spotlight-card');
+                spotlightCards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        card.style.setProperty('--mouse-x', `${x}px`);
+                        card.style.setProperty('--mouse-y', `${y}px`);
+                    });
+                });
+            })();
+        </script>
+    </section>
+
+    <!-- ========== DIFERENCIAIS & RESULTADOS (DOBRA 6) ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="diff-grid">
+                <div class="reveal-left">
+                    <div class="section-eyebrow"><span class="dot"></span> Diferenciais</div>
+                    <h2 class="section-title" style="margin-bottom: 2rem;">O que nos torna <span class="highlight">diferentes.</span></h2>
+                    
+                    <ul class="diff-accordion-list">
+                        <!-- Item 1 (Active by default) -->
+                        <li class="diff-accordion-item active">
+                            <button class="diff-accordion-header" type="button" aria-expanded="true">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Especialização exclusiva no setor ambiental</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Dominamos as especificidades técnicas, regulatórias e comerciais de empresas de consultoria, laboratórios, gerenciadoras de resíduos e engenharia ambiental.</p>
+                            </div>
+                        </li>
+
+                        <!-- Item 2 -->
+                        <li class="diff-accordion-item">
+                            <button class="diff-accordion-header" type="button" aria-expanded="false">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Experiência prática real em operação, comercial e gestão</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Nossos consultores vivenciaram a liderança e gestão na prática. Não aplicamos teorias genéricas de prateleira, mas soluções testadas que realmente funcionam no dia a dia da operação.</p>
+                            </div>
+                        </li>
+
+                        <!-- Item 3 -->
+                        <li class="diff-accordion-item">
+                            <button class="diff-accordion-header" type="button" aria-expanded="false">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Atuação imersa e próxima da rotina da empresa</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Trabalhamos lado a lado com os sócios e equipes executivas, realizando acompanhamentos periódicos para orientar tomadas de decisão e eliminar gargalos operacionais em tempo real.</p>
+                            </div>
+                        </li>
+
+                        <!-- Item 4 -->
+                        <li class="diff-accordion-item">
+                            <button class="diff-accordion-header" type="button" aria-expanded="false">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Foco brutal em execução, não apenas em relatórios</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Não entregamos diagnósticos parados em gavetas. Nosso compromisso é com a implantação das rotinas gerenciais, garantindo que os processos aconteçam e gerem retorno financeiro concreto.</p>
+                            </div>
+                        </li>
+
+                        <!-- Item 5 -->
+                        <li class="diff-accordion-item">
+                            <button class="diff-accordion-header" type="button" aria-expanded="false">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Linguagem simples, direta e objetiva</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Comunicação sem rodeios ou jargões acadêmicos complexos. Facilitamos a compreensão de toda a equipe para que cada colaborador entenda seu papel na estratégia da empresa.</p>
+                            </div>
+                        </li>
+
+                        <!-- Item 6 -->
+                        <li class="diff-accordion-item">
+                            <button class="diff-accordion-header" type="button" aria-expanded="false">
+                                <div class="diff-accordion-title-wrap">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    <span>Visão integrada entre comercial, operação, custos e liderança</span>
+                                </div>
+                                <div class="diff-accordion-chevron">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                            </button>
+                            <div class="diff-accordion-content">
+                                <p>Conectamos todos os pilares do negócio. Alinhamos a atração e prospecção de vendas com a capacidade de entrega operacional, garantindo margens de lucro saudáveis e sustentabilidade.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="results-card reveal-right">
+                    <div>
+                        <h3>Resultados <span class="highlight">Alcançados</span></h3>
+                    </div>
+                    
+                    <div class="results-highlight-box">
+                        <p class="results-highlight-quote">
+                            "Resultado não acontece por acaso. Resultado é consequência de <span>decisão, rotina e execução disciplinada.</span>"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script de Controle dos Accordions dos Diferenciais -->
+        <script>
+            (function() {
+                const initDiffAccordion = () => {
+                    const headers = document.querySelectorAll('.diff-accordion-header');
+                    if (headers.length === 0) return;
+
+                    headers.forEach(header => {
+                        header.addEventListener('click', () => {
+                            const item = header.closest('.diff-accordion-item');
+                            const content = item.querySelector('.diff-accordion-content');
+                            const isActive = item.classList.contains('active');
+
+                            // Fechar todos os outros accordions para manter o layout limpo
+                            document.querySelectorAll('.diff-accordion-item').forEach(otherItem => {
+                                otherItem.classList.remove('active');
+                                const otherHeader = otherItem.querySelector('.diff-accordion-header');
+                                if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+                                const otherContent = otherItem.querySelector('.diff-accordion-content');
+                                if (otherContent) otherContent.style.maxHeight = null;
+                            });
+
+                            // Abrir o item clicado se não estava ativo
+                            if (!isActive) {
+                                item.classList.add('active');
+                                header.setAttribute('aria-expanded', 'true');
+                                content.style.maxHeight = content.scrollHeight + 30 + "px";
+                            }
+                        });
+                    });
+
+                    // Inicializar a primeira aba aberta
+                    const activeItem = document.querySelector('.diff-accordion-item.active');
+                    if (activeItem) {
+                        const activeContent = activeItem.querySelector('.diff-accordion-content');
+                        if (activeContent) {
+                            activeContent.style.maxHeight = activeContent.scrollHeight + 30 + "px";
+                        }
+                    }
+                };
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initDiffAccordion);
+                } else {
+                    initDiffAccordion();
+                }
+            })();
+        </script>
+    </section>
+
+    <!-- ========== PLANOS DE CONTRATAÇÃO (DOBRA 7) ========== -->
+    <section class="section pricing-section" id="planos">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-eyebrow" style="margin: 0 auto 1.25rem;"><span class="dot"></span> Planos & Modelos</div>
+                <h2 class="section-title">Formatos de <span class="highlight">Contratação Flexíveis</span></h2>
+                <p class="section-subtitle">Escolha a modalidade de parceria ideal para a fase de maturidade da sua empresa.</p>
+            </div>
+
+            <div class="pricing-grid reveal">
+                <!-- Basic -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">Grátis</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Materiais de Estudo e Templates</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Treinamentos Online Gravados</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Workshops e Treinamento Ao Vivo</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ferramentas e Planilhas Básicas</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-secondary">Começar Grátis</a>
+                </div>
+
+                <!-- Padrão (Destaque) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-featured-badge">Mais Recomendado</div>
+                    <div class="pricing-header">
+                        <h3>Padrão</h3>
+                        <div class="pricing-price">R$ 2.990<span>/mês</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Todos os itens do plano Basic</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Portal SNA – Gestão de Atividades</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 2 horas Semanais com Especialista</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Suporte Full Time – Assessor Dedicado</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-accent">Assinar Padrão</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">R$ 5.990<span>/mês</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Todos os itens do plano Padrão</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> INA – Inteligência de Negócios SNA</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Atuação Presencial de 8 horas/Mês</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Exclusividade no segmento/região</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-primary">Falar com Especialista</a>
+                </div>
+            </div>
+
+            <!-- Assessoria Banner -->
+            <div class="assessoria-banner reveal">
+                <div style="position: relative; z-index: 1;">
+                    <h3 style="font-size: 1.85rem; margin-bottom: 0.75rem; color: #FFFFFF;">Assessoria Estratégica Contínua</h3>
+                    <p style="max-width: 580px; color: rgba(255, 255, 255, 0.85); font-size: 1.05rem; line-height: 1.7;">
+                        Atuação presencial (8h/mês) e remota (2h/semana) com apoio full-time. Foco total em implantação, acompanhamento e ajustes de rota diários.
+                    </p>
+                </div>
+
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; color: var(--color-accent-vibrant); margin-bottom: 1rem;">
+                        R$ 4.960<span style="font-size: 1.1rem; font-weight: 500; color: rgba(255, 255, 255, 0.7);">/mês</span>
+                    </div>
+                    <a href="#contato" class="btn btn-accent">Agendar Diagnóstico</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTATO (DOBRA 8) ========== -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal-left">
+                    <img src="./extracted/SVG/Logo Transparente Verde.svg" alt="Logo SNA" class="contact-section-logo">
+                    <div class="section-eyebrow"><span class="dot"></span> Contato</div>
+                    <h2 class="section-title">Vamos estruturar o seu <span class="highlight">negócio?</span></h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Nosso compromisso é atuar lado a lado com a sua empresa, apoiando a liderança na construção de uma gestão transparente, eficiente e altamente lucrativa.
+                    </p>
+
+                    <div class="contact-links" style="margin-top: 2rem;">
+                        <a href="mailto:suzuki@snaconsult.com.br" class="contact-link">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            suzuki@snaconsult.com.br
+                        </a>
+
+                        <a href="https://instagram.com/SNAConsult" target="_blank" class="contact-link">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </div>
+                            @SNAConsult
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal-right">
+                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.75rem;">Solicite um Diagnóstico Estratégico</h3>
+                    <form action="#" method="POST" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Seu Nome Completo" required id="input-name">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail Corporativo" required id="input-email">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nome da sua Empresa" required id="input-company">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control"
+                                placeholder="Conte um pouco sobre o seu desafio atual. Como podemos ajudar a estruturar o seu negócio?"
+                                required id="input-message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" id="btn-submit">
+                            Solicitar Contato Estratégico
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <img src="./extracted/SVG/Logo Transparente Verde.svg" alt="SNA Logo">
+                    </a>
+                    <p class="footer-desc">Braço estratégico para empresas do setor ambiental. Menos teoria. Mais execução.</p>
+                </div>
+
+                <div>
+                    <h4>Navegação</h4>
+                    <div class="footer-links">
+                        <a href="#frentes">Nossas Frentes</a>
+                        <a href="#quem-somos">Quem Somos</a>
+                        <a href="#para-quem">Para Quem Atuamos</a>
+                        <a href="#metodologia">Como Atuamos</a>
+                        <a href="#planos">Planos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Nossa Filosofia</h4>
+                    <p class="footer-essence">
+                        "Vender é estratégia,<br>
+                        Controlar custos é inteligência,<br>
+                        Resultado é consequência."
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="color: #FFFFFF;">&copy; 2026 SNA – Soluções em Negócios Ambientais. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- ========== SCRIPTS COMPLETO & NAVEGAÇÃO DO CARROSSEL ========== -->
+    <script>
+        // ============================================
+        // 1. TRANSIÇÃO DE CARDS MOVIDA A SCROLL (PINNED SCROLL NOSSAS FRENTES)
+        // ============================================
+        const frentesWrapper = document.getElementById('frentes');
+        const frentesTrack = document.getElementById('frentes-carousel-track');
+        const prevBtn = document.getElementById('carousel-prev-btn');
+        const nextBtn = document.getElementById('carousel-next-btn');
+
+        function updateFrentesScroll() {
+            if (!frentesWrapper || !frentesTrack) return;
+
+            const rect = frentesWrapper.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalScrollableDistance = frentesWrapper.offsetHeight - windowHeight;
+
+            // Distância que o usuário rolou a partir do momento em que a seção grudou no topo
+            const currentScroll = -rect.top;
+            const progress = Math.min(Math.max(currentScroll / totalScrollableDistance, 0), 1);
+
+            // Largura total necessária para deslizar todos os 8 cards até o final
+            const maxTranslateX = frentesTrack.scrollWidth - window.innerWidth + 80;
+
+            if (maxTranslateX > 0) {
+                const targetX = -progress * maxTranslateX;
+                frentesTrack.style.transform = `translateX(${targetX}px)`;
+            }
+        }
+
+        // Registrar eventos de scroll e resize com opção passiva para máxima fluidez
+        window.addEventListener('scroll', updateFrentesScroll, { passive: true });
+        window.addEventListener('resize', updateFrentesScroll, { passive: true });
+        updateFrentesScroll(); // Inicialização no carregamento
+
+        // Suporte aos Botões Manuais (Rolam a página suavemente até o próximo/anterior card)
+        if (prevBtn && nextBtn && frentesWrapper) {
+            nextBtn.addEventListener('click', () => {
+                const scrollStep = window.innerHeight * 0.45;
+                window.scrollBy({ top: scrollStep, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                const scrollStep = window.innerHeight * 0.45;
+                window.scrollBy({ top: -scrollStep, behavior: 'smooth' });
+            });
+        }
+
+        // ============================================
+        // 2. ADAPTAÇÃO DINÂMICA DO HEADER & LOGO
+        // ============================================
+        const header = document.getElementById('header');
+        const headerLogo = document.getElementById('header-logo');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                header.classList.add('scrolled');
+                if (headerLogo) headerLogo.src = './extracted/SVG/Logo Transparente Verde.svg';
+            } else {
+                header.classList.remove('scrolled');
+                if (headerLogo) headerLogo.src = './extracted/SVG/Logo Transparente Branco.svg';
+            }
+        });
+
+        // ============================================
+        // 3. MENU MOBILE RESPONSIVO
+        // ============================================
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        const menuIconOpen = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+        const menuIconClose = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileBtn.innerHTML = navLinks.classList.contains('active') ? menuIconClose : menuIconOpen;
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileBtn.innerHTML = menuIconOpen;
+            });
+        });
+
+        // ============================================
+        // 4. ANIMAÇÃO SUAVE NAS PASSAGENS PELAS DOBRAS (INTERSECTION OBSERVER)
+        // ============================================
+        const revealOptions = {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.12
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // ============================================
+        // 5. ANIMAÇÃO DOS CONTADORES (STATS)
+        // ============================================
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            counters.forEach(counter => {
+                const text = counter.textContent.trim();
+                if (text.includes('%')) {
+                    const target = parseInt(text);
+                    let current = 0;
+                    const increment = target / 40;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + '%';
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '%';
+                        }
+                    }, 30);
+                }
+            });
+        }
+
+        const statsSection = document.querySelector('.stats-row');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            statsObserver.observe(statsSection);
+        }
+
+        // ============================================
+        // 6. NAVEGAÇÃO SUAVE (SMOOTH ANCHOR SCROLLING)
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 15;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // 7. ENVIO INTERATIVO DO FORMULÁRIO
+        // ============================================
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit');
+            btn.textContent = '✓ Solicitado com Sucesso!';
+            btn.style.background = '#2E7D32';
+            btn.style.color = '#FFFFFF';
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Solicitar Contato Estratégico <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>';
+                btn.style.background = '';
+                btn.style.color = '';
+                e.target.reset();
+            }, 3500);
+        });
+    </script>
+</body>
+
+</html>
